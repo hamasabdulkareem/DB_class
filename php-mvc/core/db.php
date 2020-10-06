@@ -1,5 +1,5 @@
 <?PHP
-//include("../app/config/database.php");
+require_once("app/config/database.php");
 class DB{
    
    /* function create_db($db_name){
@@ -9,13 +9,12 @@ class DB{
     public $tables="";
     public $cond="";
     public $final_query="";
-    private $db_conn;
-
-    /*function __construct($server,$dbname,$username,$password){
-        $conn = "mysql::host=$server;dbname=$dbname";
+    private $db_conn; 
+    function __construct(){
+        $conn = dbconnect::$server.":host=".dbconnect::$host.";dbname=".dbconnect::$dbname;
         $options = [ PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,];
-        $this->$db_conn = new PDO($conn, $username, $password, $options);
-    }*/
+        $this->$db_conn = new PDO($conn,dbconnect::$username, dbconnect::$password, $options);
+    }
    
     function select($cols){
         $this->colums="select ".implode(",",$cols)." ";
