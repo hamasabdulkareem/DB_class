@@ -1,5 +1,5 @@
 <?PHP
-require_once("app/config/database.php");
+include("../app/config/database.php");
 class DB{
    
    /* function create_db($db_name){
