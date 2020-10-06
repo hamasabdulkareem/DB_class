@@ -18,7 +18,7 @@
         ->where("id","=","3")
         ->where("address","=","sanaa")
         ->build();
-       // ->exeucte();
+        ->exeucte();
     }
         /*limit*/
         function getData_limit(){
@@ -90,10 +90,10 @@
 
 $cat = new category();
 $cat->getData();
-$cat->getData_order();
+/*$cat->getData_order();
 $cat->getData_inner();
 $cat->getData_limit();
 $cat->getData_left();
 $cat->getData_right();
-$cat->getData_group();
+$cat->getData_group();*/
 ?>

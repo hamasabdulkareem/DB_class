@@ -1,5 +1,5 @@
 <?PHP
-include("../app/config/database.php");
+//require_once("../app/config/database.php");
 class DB{
    
    /* function create_db($db_name){
@@ -62,8 +62,16 @@ class DB{
        // return $this->colums.$this->tables.$this->cond;
     }
     function exeucte(){
-       // return $this->db_conn->query($this->final_query);
-   }
+        try{
+            $stmt= $this->db_conn->prepare($this->final_query);
+            $stmt->execute();
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            print_r($result);
+            echo "<br> successfully<br>";
+        } catch(PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+          }
+    }
    function insert($tbls,$data){
    // $sql = "INSERT INTO ".$tbls."(".implode(",",array_key($data)).") VALUES (".implode(",",array_values($data));
    // $conn->exec($sql);
